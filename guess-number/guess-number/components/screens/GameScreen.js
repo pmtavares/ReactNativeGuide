@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
 import NumberContainer from '../NumberContainer';
 import Card from '../Card';
@@ -20,37 +20,49 @@ const generateNumber = (min, max, exclude) =>
 }
 
 const GameScreen = props => {
-    const [currentGuess, setCurrentGuess] = useState(generateNumber(1,100, props.userChoice));
+    const [currentGuess, setCurrentGuess] = useState(generateNumber(1,100, props.userChoise));
     const [endGame, setEndGame] = useState('');
 
+    const [rounds, setRounds] = useState(0);
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
+    const {userChoise, onGameOver} = props;
+
+    useEffect(() => {
+        if(currentGuess === userChoise)
+        {
+            props.onGameOver(rounds);
+        }
+    }, [currentGuess, userChoise, onGameOver]);
 
     const nextGuessHandler = direction => {
-        if((direction === 'lower' && currentGuess < props.userChoice) || 
-                (direction ===  'greater' &&  currentGuess > props.userChoice) )
+        if((direction === 'lower' && currentGuess < props.userChoise) || 
+                (direction ===  'greater' &&  currentGuess > props.userChoise) )
         {
             Alert.alert('Dont lie!', 'It is wrong...', [{text: "Sorry", style: "cancel"}]);
             return;
+        }
+        else{
+            console.log("Direction is: " + direction + " Current: "+ currentGuess + " Choice: " + props.userChoise)
         }
 
         if(direction === "lower")
         {
             currentHigh.current = currentGuess;
         }
-        if(direction === "greater")
+        else
         {
-            currentLow.current = currentGuess;
-           
+            currentLow.current = currentGuess;           
         }
         const nextNumber = generateNumber(currentLow.current, currentHigh.current, currentGuess);
         setCurrentGuess(nextNumber);
+        setRounds(curRounds => curRounds + 1);
     };
 
     const finishGame = () => {
         setEndGame(false);
         setCurrentGuess(undefined);
-        props.userChoice = undefined;
+        props.userChoise = undefined;
     }
     return (
         <View style={styles.screen}>
