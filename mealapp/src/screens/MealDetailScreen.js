@@ -1,11 +1,11 @@
 import React from 'react'
 import {View, StyleSheet, Text, Button} from 'react-native'
 
-const MeailDetailScreen = props => {
+const MealDetailScreen = props => {
         return (
             <View style={styles.screen}>
                 <Text>
-                MeailDetailScreen
+                Meail Detail Screen
                 </Text>
                 <Button title="Go back to main " onPress={() => props.navigation.popToTop()}/>
             </View>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MeailDetailScreen;
+export default MealDetailScreen;
