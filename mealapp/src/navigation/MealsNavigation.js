@@ -10,33 +10,28 @@ const MealsNavigator = createStackNavigator({
         screen: CategoriesScreen,
         navigationOptions: {
             headerTitle: "Meal Categories",
-            headerStyle: {
-                backgroundColor: Platform.OS ==='android' ? Colors.primaryColor : "white",                
-            },
-            headerTintColor: '#fff'
-            
+             
         }
     },
-    CategoryMeals: {
+    CategoryMeals:{
         screen: CategoryMealsScreen,
         navigationOptions: (props) => ({
             headerTitle: props.navigation.getParam('categoryTitle'),
-            headerStyle: {
-                backgroundColor: Platform.OS ==='android' ? Colors.primaryColor : "white",                
-            },
-            headerTintColor: '#fff'          
-        }),
+                   
+        }), 
 
     },
     MealDetail: {
         screen: MealDetailScreen,
-        navigationOptions: () => ({
-            headerTitle: "Meal details screen",
-                headerStyle: {
-                    backgroundColor: Platform.OS ==='android' ? Colors.primaryColor : "white",                
-                },
-            headerTintColor: '#fff'
-        })
+        headerTitle: "Meal Detail",
+      
+    }
+}, {
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: Platform.OS ==='android' ? Colors.primaryColor : "white",                
+        },
+    headerTintColor: '#fff'
     }
 });
 

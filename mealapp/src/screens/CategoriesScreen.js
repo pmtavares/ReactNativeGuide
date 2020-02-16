@@ -22,8 +22,7 @@ const CategoriesScreen = props => {
                 <FlatList numColumns={2} data={CATEGORIES} keyExtractor={(item, id) => item.id}
                     renderItem={renderGridItem}
                 />
-                <Button title="Go to meals " onPress={() => 
-                    props.navigation.navigate("CategoryMeals", {categoryId: itemData.item.id})}/>
+
             </View>
 
         )
