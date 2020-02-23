@@ -2,20 +2,21 @@ import React from 'react'
 import {View, StyleSheet, Button, Text, FlatList, TouchableOpacity, Platform} from 'react-native'
 import {CATEGORIES} from '../data/dummy-data';
 import Colors from '../constants/Colors';
+import CategoryGridTile from '../components/CategoryGridTile'
 
 const CategoriesScreen = props => {
     const catId = props.navigation.getParam('categoryId');
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+    
     const renderGridItem = (itemData) => {
-        return (
-            <TouchableOpacity 
-                onPress={() => props.navigation.navigate("CategoryMeals", {categoryId: itemData.item.id, categoryTitle:itemData.item.title })} 
-                            style={styles.grid} >
-                <View >
-                    <Text>{itemData.item.title}</Text>
-                </View>
-            </TouchableOpacity>
-        )
+        return(       
+        <CategoryGridTile title={itemData.item.title} 
+            color={itemData.item.color}
+            onSelect={() => {
+            props.navigation.navigate({routeName: "CategoryMeals", 
+            params: {categoryId: itemData.item.id }})
+       }}/>)
+
      }
         return (
             <View style={styles.screen}>
