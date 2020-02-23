@@ -3,7 +3,6 @@ import {View, StyleSheet, Text, TouchableOpacity, Platform} from 'react-native'
 
 
 const CategoryGridTile = props => {
-
     return (    
         <TouchableOpacity  style={styles.gridItem}
             onPress={props.onSelect} 
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
         padding: 15,
         justifyContent: 'flex-end',
         alignItems: 'flex-end'
-
     },
     title:{
         fontSize: 22,
