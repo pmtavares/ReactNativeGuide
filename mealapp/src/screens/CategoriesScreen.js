@@ -4,6 +4,8 @@ import {CATEGORIES} from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile'
 
 const CategoriesScreen = props => {
+    const catId = props.navigation.getParam('categoryId');
+    const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
     
     const renderGridItem = (itemData) => {
         return(       
