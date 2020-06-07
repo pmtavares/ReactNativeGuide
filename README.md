@@ -10,4 +10,4 @@ Small simple projects using React native
 
 #### Commands
 
-
+Run: npx react-native run-android
