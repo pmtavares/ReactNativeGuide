@@ -23,6 +23,7 @@ const MealsNavigator = createStackNavigator({
     },
     MealDetail: {
         screen: MealDetailScreen,
+
         //headerTitle: "Meal Detail", if we leave it, it would overwrite header title in the component
       
     }
