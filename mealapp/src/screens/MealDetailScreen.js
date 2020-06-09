@@ -11,7 +11,6 @@ const MealDetailScreen = props => {
         return (
             <View style={styles.screen}>
                 <Text>
-
                 {selectedMeal.title}
                 </Text>
                 <Button title="Go back to main " onPress={() => props.navigation.popToTop()}/>
