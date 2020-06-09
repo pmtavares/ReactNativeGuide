@@ -10,6 +10,7 @@ Small simple projects using React native
 * npm install --save react-native-vector-icons@6.6.0
 * npm install react-navigation-tabs@2.8.13
 * npm install react-navigation-material-bottom-tabs@2.2.12 react-native-paper@3.10.1
+* npm install react-navigation-drawer@2.4.13
 
 #### Commands
 

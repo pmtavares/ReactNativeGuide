@@ -13,6 +13,14 @@ const FilterScreen = props => {
     
 }
 
+
+FilterScreen.navigationOptions = (navigationData) =>{
+    return {
+        headerTitle: "Filter Meals",
+
+    }
+};
+
 const styles = StyleSheet.create({
     screen:{
         flex: 1,

@@ -3,6 +3,9 @@ import {View, StyleSheet, FlatList} from 'react-native'
 import {CATEGORIES} from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile'
 
+import {HeaderButton, Item} from 'react-navigation-header-buttons';
+import CustomHeaderButton from '../components/CustomHeaderButton'
+
 const CategoriesScreen = props => {
     const catId = props.navigation.getParam('categoryId');
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
