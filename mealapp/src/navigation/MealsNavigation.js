@@ -42,7 +42,10 @@ const MealsNavigator = createStackNavigator({
         headerStyle: {
             backgroundColor: Platform.OS ==='android' ? Colors.primaryColor : "white",                
         },
-    headerTintColor: '#fff'
+        headerTitleStyle:{
+
+        },
+        headerTintColor: '#fff'
     }
 });
 
@@ -74,7 +77,8 @@ const tabScreenConfig = {
             tabBarIcon: (tabInfo) => { 
                 return <Icon size={25} name="cutlery" color={tabInfo.tintColor}/>;
             },
-            tabBarColor: Colors.primaryColor   
+            tabBarColor: Colors.primaryColor,
+            tabBarLabel: "Meals!!"   
         },
         
     },
