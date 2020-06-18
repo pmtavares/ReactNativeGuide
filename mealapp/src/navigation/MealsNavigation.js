@@ -109,7 +109,11 @@ const FiltersNavigator = createStackNavigator({
             headerTitle: "Filter meals",
             headerLeft: () =>  <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
                             <Item title="menu" iconName="bars" onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer()) }/>
-                        </HeaderButtons>
+                        </HeaderButtons>,
+            headerRight: () =>  <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                                    <Item title="Save" iconName="save" 
+                                        onPress= {props.navigation.getParam('save')}/>
+                                </HeaderButtons>
              
         })
     }

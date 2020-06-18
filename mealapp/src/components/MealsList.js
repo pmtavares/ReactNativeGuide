@@ -12,7 +12,12 @@ const MealsList = (props) => {
                 complexity={itemData.item.complexity}
                 image={itemData.item.imageUrl}
                 onSelectMeal={() => {
-                    props.navigation.navigate({routeName:"MealDetail", params: {id: itemData.item.id}})
+                    props.navigation.navigate(
+                        {routeName:"MealDetail", 
+                        params: {
+                            id: itemData.item.id,
+                            mealTitle: itemData.item.title
+                        }})
                 }}
             />
 
