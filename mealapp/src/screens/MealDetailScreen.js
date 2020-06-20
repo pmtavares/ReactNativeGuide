@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useCallback} from 'react'
 import {View, StyleSheet, Text,  ScrollView, Image} from 'react-native'
 import {MEALS} from '../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/CustomHeaderButton';
 import DefaultText from '../components/DefaultText';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {toogleFavorite} from '../store/actions/meals';
+
 
 const ListItem = ({children}) => {
     return <View style={styles.listItem}>
@@ -17,10 +19,22 @@ const MealDetailScreen = props => {
         const mealsAvailable = useSelector(state => state.meals.meals);
         const selectedMeal = mealsAvailable.find(opt => opt.id === mealId);
 
+        const currentMealIsFavorite = useSelector(state => 
+            state.meals.favoriteMeals.some(meal => meal.id === mealId));
 
-       //useEffect(() => {
-         //   props.navigation.setParams({mealTitle: selectedMeal.title});
-        //}, [selectedMeal])
+        const dispatch =  useDispatch();
+
+        const toggleFavoriteHandler = useCallback(() => {
+            dispatch(toogleFavorite(mealId))
+        }, [dispatch, mealId])
+
+       useEffect(() => {
+            props.navigation.setParams({toggleFav: toggleFavoriteHandler});
+        }, [toggleFavoriteHandler])
+
+        useEffect(() => {
+            props.navigation.setParams({isFav: currentMealIsFavorite})
+        }, [currentMealIsFavorite])
 
         return (
             <ScrollView>
@@ -51,14 +65,18 @@ const MealDetailScreen = props => {
 }
 
 MealDetailScreen.navigationOptions = (navigationData) =>{
-    const mealId = navigationData.navigation.getParam('id');
+    //const mealId = navigationData.navigation.getParam('id');
     const mealTitle = navigationData.navigation.getParam('mealTitle');
     //const selectedMeal = MEALS.find(opt => opt.id === mealId);
+    const tooggleFavorite = navigationData.navigation.getParam('toggleFav');
+    const isFavorite = navigationData.navigation.getParam('isFav');
     return {
         headerTitle: mealTitle,
         headerRight: () => (<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
                         <Item title="favorite" 
-                            iconName="star"/> 
+                            iconName={isFavorite ? "star": 'star-o'}
+                            onPress ={tooggleFavorite}
+                            /> 
                     </HeaderButtons>)
     }
 };

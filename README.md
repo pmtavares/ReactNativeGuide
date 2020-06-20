@@ -11,6 +11,7 @@ Small simple projects using React native
 * npm install react-navigation-tabs@2.8.13
 * npm install react-navigation-material-bottom-tabs@2.2.12 react-native-paper@3.10.1
 * npm install react-navigation-drawer@2.4.13
+* npm install redux@4.0.5 react-redux@7.2.0
 
 #### Commands
 
