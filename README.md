@@ -2,6 +2,7 @@
 Small simple projects using React native
 
 #### Instalation 
+* npx react-native init "ProjectName"
 * Navigation: npm install react-navigation-stack npm install react-navigation
 * Npm install react-native-gesture-handler react-native-reanimated react-native-screens
 * npm install react-native-safe-area-context
